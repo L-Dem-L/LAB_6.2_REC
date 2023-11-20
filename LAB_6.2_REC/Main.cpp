@@ -1,23 +1,34 @@
 #include <iostream>
 
+void fillArrayRecursive(int arr[], int size, int index) {
+    if (index < size) {
+        std::cin >> arr[index];
+        fillArrayRecursive(arr, size, index + 1);
+    }
+}
+
 void fillArray(int arr[], int size) {
-    std::cout << "Enter " << size << " elements for the array:\n";
-    for (int i = 0; i < size; ++i) {
-        std::cin >> arr[i];
+    fillArrayRecursive(arr, size, 0);
+}
+
+void printArrayRecursive(const int arr[], int size, int index) {
+    if (index < size) {
+        std::cout << arr[index] << " ";
+        printArrayRecursive(arr, size, index + 1);
+    }
+    else {
+        std::cout << std::endl;
     }
 }
 
 void printArray(const int arr[], int size) {
     std::cout << "Array: ";
-    for (int i = 0; i < size; ++i) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
+    printArrayRecursive(arr, size, 0);
 }
 
 int sumOddIndexedElementsRecursive(const int arr[], int size, int index) {
     if (index >= size) {
-        return 0; 
+        return 0;
     }
     return arr[index] + sumOddIndexedElementsRecursive(arr, size, index + 2);
 }
